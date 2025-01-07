@@ -1,0 +1,33 @@
+//Copyright (C)2014-2024 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//Tool Version: V1.9.10.03 (64-bit)
+//Part Number: GW2A-LV18PG256C8/I7
+//Device: GW2A-18
+//Device Version: C
+//Created Time: Mon 01 06 22:55:06 2025
+
+IO_LOC "baudOut" G14;
+IO_PORT "baudOut" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "txLine" J14;
+IO_PORT "txLine" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "loadTransmit" J16;
+IO_PORT "loadTransmit" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[7]" G12;
+IO_PORT "parallelIn[7]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[6]" M14;
+IO_PORT "parallelIn[6]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[5]" T14;
+IO_PORT "parallelIn[5]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[4]" P13;
+IO_PORT "parallelIn[4]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[3]" F13;
+IO_PORT "parallelIn[3]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[2]" M15;
+IO_PORT "parallelIn[2]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[1]" R13;
+IO_PORT "parallelIn[1]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "parallelIn[0]" R12;
+IO_PORT "parallelIn[0]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "systemClockIn" H11;
+IO_PORT "systemClockIn" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
