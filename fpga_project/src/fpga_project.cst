@@ -7,8 +7,6 @@
 //Device Version: C
 //Created Time: Wed 01 08 16:36:31 2025
 
-IO_LOC "baudOut" G14;
-IO_PORT "baudOut" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
 IO_LOC "txLine" J14;
 IO_PORT "txLine" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
 IO_LOC "loadTransmit" T2;
