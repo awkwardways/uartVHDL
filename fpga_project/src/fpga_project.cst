@@ -5,13 +5,13 @@
 //Part Number: GW2A-LV18PG256C8/I7
 //Device: GW2A-18
 //Device Version: C
-//Created Time: Mon 01 06 22:55:06 2025
+//Created Time: Wed 01 08 16:36:31 2025
 
 IO_LOC "baudOut" G14;
 IO_PORT "baudOut" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
 IO_LOC "txLine" J14;
 IO_PORT "txLine" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
-IO_LOC "loadTransmit" J16;
+IO_LOC "loadTransmit" T2;
 IO_PORT "loadTransmit" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
 IO_LOC "parallelIn[7]" G12;
 IO_PORT "parallelIn[7]" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;

@@ -3,15 +3,15 @@ use ieee.std_logic_1164.all;
 
 entity tx is 
   generic(
-    systemClockFrequency : positive := 50e6;
+    systemClockFrequency : positive := 27e6;
     bauds : positive := 9600
   );
   port(
     systemClockIn : in std_logic;
     txLine        : out std_logic := '1';
     parallelIn    : in std_logic_vector(7 downto 0);
-    baudOut       : out std_logic;
-    loadTransmit  : in std_logic
+    loadTransmit  : in std_logic;
+    baudOut       : out std_logic
   );
 end entity tx;
 
@@ -19,7 +19,8 @@ architecture rtl of tx is
   type transmissionState is (idle, startBit, stopBit, data);
   signal currentState : transmissionState := idle;
   signal baudIn       : std_logic;
-  signal byteBuffer   : std_logic_vector(7 downto 0);
+  signal byteBuffer   : std_logic_vector(7 downto 0) := x"48";
+
 begin
 
   baudGenerator: entity work.clockDivider(rtl)
@@ -35,13 +36,13 @@ begin
   loadByte: process(systemClockIn)
   begin
     if rising_edge(systemClockIn) then
-      if loadTransmit = '0' then
-        byteBuffer <= parallelIn;
+      if loadTransmit = '1' then
+        byteBuffer <= x"48";
       end if;
     end if;
   end process loadByte;
   
-  baudOut <= baudIn;
+    baudOut <= baudIn;
 
   transmitByte: process(baudIn)
     variable isTransmitting : std_logic := '0';
@@ -49,8 +50,10 @@ begin
   begin
     if rising_edge(baudIn) then
 
-      if loadTransmit = '1' then
+      if loadTransmit = '0' then
         isTransmitting := '1';
+      else
+        isTransmitting := '0';
       end if;
 
       case currentState is
@@ -68,14 +71,16 @@ begin
         
         when data =>
           if currentBit = 8 then
-            currentState <= stopBit;
+            txLine <= '1';
             currentBit := 0;
+            currentState <= stopBit;
+          else
+            txLine <= byteBuffer(currentBit);
+            currentBit := currentBit + 1;
           end if;
-          txLine <= byteBuffer(currentBit);
-          currentBit := currentBit + 1;
+            
         
         when stopBit =>
-          txLine <= '1';
           currentState <= idle;
           isTransmitting := '0';
       end case;
