@@ -11,7 +11,7 @@ entity tx is
     txLine        : out std_logic := '1';
     parallelIn    : in std_logic_vector(7 downto 0);
     loadTransmit  : in std_logic;
-    baudOut       : out std_logic
+    -- baudOut       : out std_logic 
   );
 end entity tx;
 
@@ -42,7 +42,7 @@ begin
     end if;
   end process loadByte;
   
-    baudOut <= baudIn;
+    -- baudOut <= baudIn;
 
   transmitByte: process(baudIn)
     variable isTransmitting : std_logic := '0';

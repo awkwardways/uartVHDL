@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity tx is 
   generic(
-    systemClockFrequency : positive := 50e6;
+    systemClockFrequency : positive := 27e6;
     bauds : positive := 9600
   );
   port(
@@ -65,14 +65,15 @@ begin
         
         when data =>
           if currentBit = 8 then
-            currentState <= stopBit;
+            txLine <= '1';
             currentBit := 0;
+            currentState <= stopBit;
+          else
+            txLine <= byteBuffer(currentBit);
+            currentBit := currentBit + 1;
           end if;
-          txLine <= byteBuffer(currentBit);
-          currentBit := currentBit + 1;
         
         when stopBit =>
-          txLine <= '1';
           currentState <= idle;
           isTransmitting := '0';
       end case;
