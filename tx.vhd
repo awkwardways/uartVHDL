@@ -11,6 +11,7 @@ entity tx is
     txLine        : out std_logic := '1';
     parallelIn    : in std_logic_vector(7 downto 0);
     loadTransmit  : in std_logic
+    -- baudOut       : out std_logic 
   );
 end entity tx;
 
@@ -18,7 +19,8 @@ architecture rtl of tx is
   type transmissionState is (idle, startBit, stopBit, data);
   signal currentState : transmissionState := idle;
   signal baudIn       : std_logic;
-  signal byteBuffer   : std_logic_vector(7 downto 0);
+  signal byteBuffer   : std_logic_vector(7 downto 0) := x"00";
+
 begin
 
   baudGenerator: entity work.clockDivider(rtl)
@@ -34,20 +36,27 @@ begin
   loadByte: process(systemClockIn)
   begin
     if rising_edge(systemClockIn) then
-      if loadTransmit = '0' then
+      if loadTransmit = '1' then
         byteBuffer <= parallelIn;
       end if;
     end if;
   end process loadByte;
   
+    -- baudOut <= baudIn;
+
   transmitByte: process(baudIn)
     variable isTransmitting : std_logic := '0';
     variable currentBit : natural := 0; 
+    -- variable coolDown : integer := 0;
   begin
     if rising_edge(baudIn) then
 
-      if loadTransmit = '1' then
+      if loadTransmit = '0' then -- if loadTransmit = '0' and coolDown >= 9599 then
         isTransmitting := '1';
+        -- coolDown := 0;
+      -- else
+        -- isTransmitting := '0';
+        -- coolDown := coolDown + 1;
       end if;
 
       case currentState is
@@ -72,6 +81,7 @@ begin
             txLine <= byteBuffer(currentBit);
             currentBit := currentBit + 1;
           end if;
+            
         
         when stopBit =>
           currentState <= idle;
