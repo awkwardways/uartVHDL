@@ -1,0 +1,31 @@
+//Copyright (C)2014-2024 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//Tool Version: V1.9.10.03 (64-bit)
+//Part Number: GW2A-LV18PG256C8/I7
+//Device: GW2A-18
+//Device Version: C
+//Created Time: Fri 01 10 11:58:36 2025
+
+IO_LOC "error" J16;
+IO_PORT "error" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[7]" G12;
+IO_PORT "bytesReceived[7]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[6]" M14;
+IO_PORT "bytesReceived[6]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[5]" T14;
+IO_PORT "bytesReceived[5]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[4]" P13;
+IO_PORT "bytesReceived[4]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[3]" F13;
+IO_PORT "bytesReceived[3]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[2]" M15;
+IO_PORT "bytesReceived[2]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[1]" R13;
+IO_PORT "bytesReceived[1]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "bytesReceived[0]" R12;
+IO_PORT "bytesReceived[0]" IO_TYPE=LVCMOS18 PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "rxLine" J14;
+IO_PORT "rxLine" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "systemClockIn" H11;
+IO_PORT "systemClockIn" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
