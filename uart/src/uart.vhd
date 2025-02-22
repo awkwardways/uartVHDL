@@ -12,7 +12,6 @@ entity uart is
     dataIn : in std_logic_vector(7 downto 0);
     dataOut : out std_logic_vector(7 downto 0);
     systemClockIn : in std_logic;
-    receiveError : out std_logic;
     loadTransmit : in std_logic
   );
 end entity uart;
@@ -35,8 +34,7 @@ begin
   port map(
     baudIn => clockDivOut,
     rxLine => rx,
-    bytesReceived => dataOut,
-    error => receiveError
+    bytesReceived => dataOut
   );
 
   transmitter : entity work.tx(rtl)

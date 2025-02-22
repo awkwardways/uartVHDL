@@ -5,7 +5,6 @@ entity rx is
   port(
     rxLine        : in std_logic;
     bytesReceived : out std_logic_vector(7 downto 0);
-    error         : out std_logic := '0';
     baudIn        : in std_logic
   );
 end entity rx;
@@ -38,10 +37,8 @@ begin
 
         when stopBit =>
           currentState <= idle;
-          if rxLine = '1' then
-            error <= '0';
-          else
-            error <= '1';
+          if rxLine = '0' then 
+            currentState <= data;
           end if;
 
       end case;
